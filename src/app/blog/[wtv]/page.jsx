@@ -1,16 +1,19 @@
-import { useRouter } from 'next/router'
-import { blogPosts } from '@/app/(data)/blogData'
 
- 
+import posts from '@/app/(data)/blogData';
 
-export default function Page({ params }) {
-    const { id } = params;
-    const post = blogPosts.find((p) => p.id === id);
+export default async function Page({ params }) {
+  const resolvedParams = await params;
+  const { wtv } = resolvedParams;
+  const post = posts.find((p) => p.slug === wtv);
 
-    return(
-        <div>
-            <h1>{post.title}</h1>
-            <p>{post.content}</p>
-        </div>
-    )
+  if (!post) {
+    return <div>Post not found</div>;
+  }
+
+  return (
+    <div>
+      <h1>{post.title}</h1>
+      <p>{post.content}</p>
+    </div>
+  );
 }

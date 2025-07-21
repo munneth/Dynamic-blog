@@ -1,12 +1,13 @@
-import { blogPosts } from '@/app/(data)/blogData'
+import  posts  from '@/app/(data)/blogData'
+import Link from 'next/link'
 
 export default function Navbar() {
     return(
         <nav>
             <ul>
-                {blogPosts.map((post) => (
+                {posts.map((post) => (
                     <li key={post.id}>
-                        <Link href={`/blog/${post.id}`}>{post.title}</Link>
+                        <Link href={`/blog/${post.slug}`}>{post.title}</Link>
                     </li>
                 ))}
             </ul> 
