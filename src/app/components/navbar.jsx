@@ -1,9 +1,10 @@
 import  posts  from '@/app/(data)/blogData'
 import Link from 'next/link'
+import styles from './navbar.module.scss'
 
 export default function Navbar() {
     return(
-        <nav>
+        <nav className={styles.navbar}>
             <ul>
                 {posts.map((post) => (
                     <li key={post.id}>
