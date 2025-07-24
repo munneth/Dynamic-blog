@@ -1,8 +1,9 @@
 
 import posts from '@/app/(data)/blogData';
 
-export default function Page({ params }) {
-  const { wtv } = params;
+export default async function Page({ params }) {
+  const resolvedParams = await params;
+  const { wtv } = resolvedParams;
   const post = posts.find((p) => p.slug === wtv);
 
 
